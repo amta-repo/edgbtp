@@ -13,7 +13,7 @@ import {
   Ruler,
   Wrench,
 } from "lucide-react";
-import heroImg from "@/assets/hero-construction.jpg";
+import heroVideo from "@/assets/hero-bg.mp4.asset.json";
 
 const CLIENTS = [
   { name: "Mairie de Calavi", icon: Landmark },
@@ -29,12 +29,15 @@ export function Hero() {
     <section className="relative isolate overflow-hidden pt-24 pb-16 sm:pt-32 sm:pb-24">
       {/* Background image with gradient mask */}
       <div className="absolute inset-0 -z-10">
-        <img
-          src={heroImg}
-          alt="Chantier EDG BTP au Bénin"
-          width={1920}
-          height={1280}
-          className="h-full w-full object-cover opacity-30"
+        <video
+          src={heroVideo.url}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          className="h-full w-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background" />
         <div className="grid-blueprint absolute inset-0 opacity-30" />
