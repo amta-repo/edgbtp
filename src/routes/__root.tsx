@@ -11,6 +11,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SiteHeader } from "../components/SiteHeader";
+import { SiteFooter } from "../components/SiteFooter";
+import { ChatBot } from "../components/ChatBot";
 
 function NotFoundComponent() {
   return (
@@ -77,17 +80,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "EDG BTP & SERVICES — Bâtir l'Avenir avec Excellence" },
+      { title: "EDG BTP & SERVICES — Construction & Génie Civil au Bénin" },
       {
         name: "description",
         content:
-          "EDG BTP & SERVICES — Entreprise de construction et génie civil à Abomey-Calavi, Bénin. Gros œuvre, rénovations, infrastructures publiques et charpente métallique.",
+          "Ériger l'héritage, structurer le progrès. EDG BTP & SERVICES — construction, rénovation et infrastructures publiques à Abomey-Calavi, Bénin.",
       },
       { property: "og:title", content: "EDG BTP & SERVICES — Construction & Génie Civil au Bénin" },
       {
         property: "og:description",
         content:
-          "Excellence en gros œuvre, rénovation et infrastructures publiques. Basés à Abomey-Calavi, nous bâtissons l'avenir du Bénin.",
+          "Ériger l'héritage, structurer le progrès. Gros œuvre, rénovations et infrastructures publiques au Bénin.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -128,8 +131,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="flex min-h-screen flex-col bg-background text-foreground">
+        <SiteHeader />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <ChatBot />
+      </div>
     </QueryClientProvider>
   );
 }
